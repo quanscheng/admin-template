@@ -18,7 +18,7 @@ const request = axios.create({
 // 请求拦截器（设置公共的请求参数、请求头）
 request.interceptors.request.use(
   (config) => {
-    // const token = store.getState().user.token; // 存在本地存储需要手动携带token 
+    // const token = store.getState().user.token; // 存在本地存储需要手动携带token
 
     // config是请求的所有信息
 
@@ -65,9 +65,9 @@ request.interceptors.response.use(
       // 服务器没有返回响应
       // 请求超时(timeout)还是网络错误(network err)
       if (error.message.indexOf("NetWork Err")) {
-        message = "暂无网络，请打开网络连接或连接WIFI试试";
+        message = "暂无网络,请打开网络连接或连接WIFI试试";
       } else if (error.message.indexOf("timeout")) {
-        message = "网络延迟，请打开4/5G网络或WIFI试试";
+        message = "网络延迟,请打开4/5G网络或WIFI试试";
       }
     }
 
