@@ -9,3 +9,9 @@
 4. 预装 react-router-dom ^6.x.x 并备注迁移说明.
 
 5. 预装 ahooks 钩子库
+
+6. 预装 lodash 函数库
+
+7. 预装 moment
+
+8. 预装 node-sass
