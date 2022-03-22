@@ -1,12 +1,30 @@
 import "./App.css";
+import "@shopify/polaris/build/esm/styles.css";
 
-import { routes } from "./configs/routes";
-import { useRoutes } from "react-router-dom";
+import { AppProvider } from "@shopify/polaris";
+import { BrowserRouter } from "react-router-dom";
+import Main from "./pages/main";
+import logo from "./assets/img/logo.svg";
+import { polaris_link } from "./utils/polaris_link";
 
 function App() {
-  const elements = useRoutes(routes);
+  const theme = {
+    logo: {
+      width: 120,
+      topBarSource: logo,
+      url: "/",
+      accessibilityLabel: "PMP",
+      contextualSaveBarSource: logo,
+    },
+  };
 
-  return <div className="App">{elements}</div>;
+  return (
+    <AppProvider theme={theme} linkComponent={polaris_link}>
+      <BrowserRouter>
+        <Main />
+      </BrowserRouter>
+    </AppProvider>
+  );
 }
 
 export default App;
