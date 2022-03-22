@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 export const Home = () => {
   const navigate = useNavigate();
   function imgs(arr) {
-    return arr.map(() => (
+    return arr.map((o, index) => (
       <img
+        key={index}
         alt=""
         width="100%"
         height="100%"
