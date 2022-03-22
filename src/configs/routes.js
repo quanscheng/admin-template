@@ -20,8 +20,4 @@ export const routes = [
       </Suspense>
     ),
   },
-  // {
-  //   path: "*",
-  //   element: <Home />,
-  // },
 ];
