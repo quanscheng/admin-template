@@ -1,10 +1,12 @@
 import { Button, Card, Layout, Page } from "@shopify/polaris";
 
 import React from "react";
+import { useLocalStorageState } from "ahooks";
 import { useNavigate } from "react-router-dom";
 
 export const Home = () => {
   const navigate = useNavigate();
+  const [, setToken] = useLocalStorageState("token");
   function imgs(arr) {
     return arr.map((o, index) => (
       <img
@@ -22,6 +24,13 @@ export const Home = () => {
   }
   return (
     <Page fullWidth title="您好! 张无忌" subtitle="下午好! 今天是fastlane陪伴你的第 xx 天">
+      <Button
+        onClick={() => {
+          setToken();
+        }}
+      >
+        清除token
+      </Button>
       <Layout>
         <Layout.Section oneThird>
           <Card sectioned>

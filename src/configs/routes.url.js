@@ -1,5 +1,5 @@
 export const _Url = {
-  test: "/test",
+  login: "/login",
   home: "/",
   partners: "/partners",
   collections: "collections",
