@@ -1,31 +1,40 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Tabs } from "@shopify/polaris";
+import { v4 as uid } from "uuid";
 
 /**
  * Tabs
- * @param {Object} {titles,iden,fitted}
+ * @param {Object} {titles,fitted}
  * @returns { tabJSX,selected }
  */
 
-export const useTabs = ({ titles, iden = "", fitted }) => {
-  const tabs = titles.map((tab) => {
-    return {
-      id: `_id_${tab}_${iden}`,
-      content: tab,
-      panelID: `_panelID_${tab}_${iden}`,
-    };
-  });
+export const useTabs = ({ titles = [], fitted = false }) => {
   // tabs选择处理函数和状态
   const [selected, setSelected] = useState(0);
   const handleTabChange = useCallback((selectedTabIndex) => setSelected(selectedTabIndex), []);
+  //
+  const tabs = titles.map((tab) => {
+    return {
+      id: `${uid()}`,
+      content: tab,
+      panelID: `${uid()}`,
+    };
+  });
 
   const tabJSX = (
     <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted={fitted}></Tabs>
   );
 
+  useEffect(() => {
+    if (!!titles.length) {
+      setSelected(0);
+    }
+  }, [titles]);
+
   return {
     tabJSX,
     selected,
+    setSelected,
   };
 };
