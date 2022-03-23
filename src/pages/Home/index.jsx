@@ -1,12 +1,17 @@
 import { Button, Card, Layout, Page } from "@shopify/polaris";
 
 import React from "react";
+import { atom_loading } from "@/store/global.atom";
 import { useLocalStorageState } from "ahooks";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 
 export const Home = () => {
   const navigate = useNavigate();
   const [, setToken] = useLocalStorageState("token");
+
+  const [, setLoading] = useRecoilState(atom_loading);
+
   function imgs(arr) {
     return arr.map((o, index) => (
       <img
@@ -31,6 +36,17 @@ export const Home = () => {
       >
         清除token
       </Button>
+      <Button
+        onClick={() => {
+          setToken(`123`);
+        }}
+      >
+        修改token
+      </Button>
+      <Button onClick={() => setLoading(true)}>loading: true</Button>
+      <Button onClick={() => setLoading(false)}>loading: fasle</Button>
+      <br />
+      <br />
       <Layout>
         <Layout.Section oneThird>
           <Card sectioned>

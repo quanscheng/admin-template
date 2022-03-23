@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AppProvider } from "@shopify/polaris";
 import { Login } from "./pages/Login/Login";
 import Main from "./pages/main";
+import { RecoilRoot } from "recoil";
 import logo from "./assets/img/logo.svg";
 import { polaris_link } from "./utils/polaris_link";
 
@@ -21,14 +22,16 @@ function App() {
   };
 
   return (
-    <AppProvider theme={theme} linkComponent={polaris_link}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/*" element={<Main />} />
-        </Routes>
-      </BrowserRouter>
-    </AppProvider>
+    <RecoilRoot>
+      <AppProvider theme={theme} linkComponent={polaris_link}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/*" element={<Main />} />
+          </Routes>
+        </BrowserRouter>
+      </AppProvider>
+    </RecoilRoot>
   );
 }
 
