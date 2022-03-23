@@ -1,4 +1,5 @@
 export const _Url = {
+  test: "/test",
   home: "/",
   partners: "/partners",
   collections: "collections",

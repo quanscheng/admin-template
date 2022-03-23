@@ -7,7 +7,15 @@ import { useLocation } from "react-router-dom";
 
 export const Menu = () => {
   const { pathname } = useLocation();
-  // 左边主菜单
+  // Section1
+  const left_top = [
+    {
+      url: _Url.test,
+      label: "Navigation.Section",
+      exactMatch: true,
+    },
+  ];
+  // 左边主菜单 Section2
   const left_menu = [
     {
       url: _Url.home,
@@ -71,7 +79,7 @@ export const Menu = () => {
       ],
     },
   ];
-  // 左边下方菜单
+  // 左边下方菜单 Section3
   const bottom_menu = [
     {
       url: _Url.settings,
@@ -83,7 +91,8 @@ export const Menu = () => {
   ];
   return (
     <Navigation location={pathname}>
-      <Navigation.Section fill items={left_menu} />
+      <Navigation.Section items={left_top} />
+      <Navigation.Section fill separator items={left_menu} />
       <Navigation.Section items={bottom_menu} />
     </Navigation>
   );
