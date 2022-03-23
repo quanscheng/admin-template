@@ -2,6 +2,7 @@ import { Button, Card, Layout, Page } from "@shopify/polaris";
 
 import React from "react";
 import { atom_loading } from "@/store/global.atom";
+import { useGlobalToast } from "@/hooks/useCustomToast";
 import { useLocalStorageState } from "ahooks";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -11,6 +12,8 @@ export const Home = () => {
   const [, setToken] = useLocalStorageState("token");
 
   const [, setLoading] = useRecoilState(atom_loading);
+  // 全局toast
+  const { toggleActive } = useGlobalToast("可以怎么设置就怎么设置");
 
   function imgs(arr) {
     return arr.map((o, index) => (
@@ -45,6 +48,7 @@ export const Home = () => {
       </Button>
       <Button onClick={() => setLoading(true)}>loading: true</Button>
       <Button onClick={() => setLoading(false)}>loading: fasle</Button>
+      <Button onClick={toggleActive}>toast</Button>
       <br />
       <br />
       <Layout>

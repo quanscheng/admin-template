@@ -1,22 +1,11 @@
-import { Toast } from "@shopify/polaris";
 import React from "react";
-/*
- * @customToastActive : Boolean
- * @toggleCustomToastActive : Function
- * @toastMessage : String
- * @error : Boolean
- * 使用:
- *    1.定义状态
- *    2.引入组件
- *    3.状态驱动组件
+import { Toast } from "@shopify/polaris";
+
+/**
+ * @param { active , toggleActive , content , error }
+ * @returns <Toast />
  */
-export const CustomToast = ({
-  customToastActive,
-  toggleCustomToastActive,
-  toastMessage = "_Dev: CustomToast_has_no_message",
-  error = false,
-}) => {
-  return customToastActive ? (
-    <Toast content={toastMessage} onDismiss={toggleCustomToastActive} error={error} />
-  ) : null;
+
+export const CustomToast = ({ active, toggleActive, content, error = false }) => {
+  return active ? <Toast content={content} onDismiss={toggleActive} error={error} /> : null;
 };
