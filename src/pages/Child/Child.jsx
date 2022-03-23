@@ -32,14 +32,12 @@ const Child = () => {
   const { DelModalJSX, toggle } = useDeleteModal({ handleDelete });
 
   // tabs
-  const [tabs, setTabs] = useState(["all", "张无忌", "周芷若", "赵敏"]);
+  const [tabs, setTabs] = useState(["张无忌", "周芷若", "赵敏"]);
   const { tabJSX, selected } = useTabs({ titles: tabs });
 
   useEffect(() => {
-    // console.log("location: ", location);
-    // console.log("params: ", params["*"]);
-    console.log("selected: ", selected);
-  }, [location, params, selected]);
+    // 可以直接获取对应 选中的tab序号  路由的参数等
+  }, [selected, location, params]);
 
   return (
     <Page title="Child">
@@ -56,13 +54,8 @@ const Child = () => {
       <Button onClick={() => setDisabled(true)}>topbar disabled-T</Button>
       <Button onClick={() => setDisabled(false)}>topbar disabled-F</Button>
       <Button onClick={toggle}>delete modal</Button>
-      <Button
-        onClick={() => {
-          setTabs(["all", "张无忌", "周芷若"]);
-        }}
-      >
-        切换tabs
-      </Button>
+      <Button onClick={() => setTabs(["张翠山", "成昆", "谢逊", "张三丰"])}>切换tabs</Button>
+      <Button onClick={() => setTabs(["张无忌", "周芷若", "赵敏"])}>切换tabs</Button>
       {tabJSX}
     </Page>
   );
