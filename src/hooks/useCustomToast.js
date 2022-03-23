@@ -2,6 +2,14 @@ import { useCallback, useEffect, useState } from "react";
 
 import { Toast } from "@shopify/polaris";
 
+/**
+ * Scope Toast message and error style
+ * or Use multiple toast messages to inform the merchant about distinct actions.
+ * @param {String} tip
+ * @param {Boolean} err
+ * @returns { active, content, error, toggleActive }
+ */
+
 export const useCustomToast = (tip, err) => {
   const [active, setActive] = useState(false); // false
   const [content, setContent] = useState(""); // "toast message"

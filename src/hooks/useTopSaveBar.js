@@ -1,6 +1,13 @@
 import { ContextualSaveBar } from "@shopify/polaris";
 import { useState } from "react";
 
+/**
+ * ContextualSaveBar
+ * @param {Function} handleSave
+ * @param {Function} handleDiscard
+ * @returns {topBarJSX,setIsDirty,setDisabled}
+ */
+
 export const useTopSaveBar = (
   handleSave = () => {
     console.log("handleSave: 没有函数");
