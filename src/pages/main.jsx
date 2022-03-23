@@ -1,13 +1,17 @@
 import { Frame, Loading } from "@shopify/polaris";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
+import {
+  atom_loading,
+  atom_toastActive,
+  atom_toastError,
+  atom_toastTip,
+} from "@/store/global.atom";
 import { useNavigate, useRoutes } from "react-router-dom";
 
 import { CustomToast } from "@/components/CustomToast";
 import { Menu } from "./main.menu";
 import { TopBarMenu } from "./main.header";
-import { atom_loading } from "@/store/global.atom";
 import { routes } from "@/configs/routes";
-import { useGlobalToast } from "@/hooks/useCustomToast";
 import { useLocalStorageState } from "ahooks";
 import { useRecoilState } from "recoil";
 
@@ -18,8 +22,11 @@ const Main = () => {
   const [isLoading] = useRecoilState(atom_loading);
   // 全局顶部 loading 条
   const global_Loading = isLoading ? <Loading /> : null;
-
-  const { active, toggleActive, content, error } = useGlobalToast();
+  // toast 提示
+  const [active, setActive] = useRecoilState(atom_toastActive); // false
+  const [content] = useRecoilState(atom_toastTip); // "toast message"
+  const [error] = useRecoilState(atom_toastError); // false
+  const toggleActive = useCallback(() => setActive((active) => !active), [setActive]);
 
   useEffect(() => {
     console.log(token);

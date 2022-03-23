@@ -38,8 +38,6 @@ request.interceptors.response.use(
   (response) => {
     // 请求成功 、响应成功并不代表功能成功
     // 功能是否成功，看响应结果的code
-    // code是20000才是功能成功，非20000就是功能失败
-    // response.data代表响应数据
     if (response.data.code === 20000) {
       // 功能成功 -- 返回成功的数据
       return response.data.data;

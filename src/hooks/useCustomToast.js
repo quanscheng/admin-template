@@ -1,12 +1,11 @@
-import { atom_toastActive, atom_toastError, atom_toastTip } from "@/store/global.atom";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 
-import { useRecoilState } from "recoil";
+import { Toast } from "@shopify/polaris";
 
-export const useGlobalToast = (tip = "", err = false) => {
-  const [active, setActive] = useRecoilState(atom_toastActive); // false
-  const [content, setContent] = useRecoilState(atom_toastTip); // "toast message"
-  const [error, setError] = useRecoilState(atom_toastError); // false
+export const useCustomToast = (tip, err) => {
+  const [active, setActive] = useState(false); // false
+  const [content, setContent] = useState(""); // "toast message"
+  const [error, setError] = useState(false); // false
 
   const toggleActive = useCallback(() => setActive((active) => !active), [setActive]);
 
@@ -16,10 +15,12 @@ export const useGlobalToast = (tip = "", err = false) => {
     setError(err);
   }, [tip, err, setContent, setError]);
 
+  const toastMarkup = active ? (
+    <Toast content={content} error={error} onDismiss={toggleActive} />
+  ) : null;
+
   return {
-    active,
-    content,
-    error,
+    toastMarkup,
     toggleActive,
   };
 };

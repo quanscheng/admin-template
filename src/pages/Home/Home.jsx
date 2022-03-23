@@ -2,7 +2,7 @@ import { Button, Card, Layout, Page } from "@shopify/polaris";
 
 import React from "react";
 import { atom_loading } from "@/store/global.atom";
-import { useGlobalToast } from "@/hooks/useCustomToast";
+import { useGlobalToast } from "@/hooks/useGlobalToast";
 import { useLocalStorageState } from "ahooks";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
