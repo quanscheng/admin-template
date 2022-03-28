@@ -1,4 +1,4 @@
-export const _Url = {
+export const routesURL = {
   login: "/login",
   home: "/",
   partners: "/partners",

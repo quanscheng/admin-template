@@ -54,7 +54,7 @@ const Child = () => {
       <Button onClick={() => setDisabled(true)}>topbar disabled-T</Button>
       <Button onClick={() => setDisabled(false)}>topbar disabled-F</Button>
       <Button onClick={toggle}>delete modal</Button>
-      <Button onClick={() => setTabs(["张翠山", "成昆", "谢逊", "张三丰"])}>切换tabs</Button>
+      <Button onClick={() => setTabs(["张翠山", "成昆", "谢逊", "张三丰"])}>切换tabs1</Button>
       <Button onClick={() => setTabs(["张无忌", "周芷若", "赵敏"])}>切换tabs</Button>
       {tabJSX}
     </Page>
