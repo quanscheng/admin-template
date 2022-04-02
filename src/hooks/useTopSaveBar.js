@@ -24,12 +24,18 @@ export const useTopSaveBar = (
       message="Unsaved changes"
       saveAction={{
         content: "Save",
-        onAction: handleSave,
+        onAction() {
+          setIsDirty(false);
+          handleSave();
+        },
         disabled,
       }}
       discardAction={{
         content: "Discard",
-        onAction: handleDiscard,
+        onAction() {
+          setIsDirty(false);
+          handleDiscard();
+        },
       }}
     />
   ) : null;

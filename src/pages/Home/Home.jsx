@@ -6,6 +6,7 @@ import { useGlobalToast } from "@/hooks/useGlobalToast";
 import { useLocalStorageState } from "ahooks";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
+import { useTopLoading } from "@/hooks/useTopLoading";
 
 export const Home = () => {
   const navigate = useNavigate();
@@ -14,6 +15,9 @@ export const Home = () => {
   const [, setLoading] = useRecoilState(atom_loading);
   // 全局toast
   const { toggleActive } = useGlobalToast("可以怎么设置就怎么设置");
+
+  // top loading hook
+  const { topLoadingJSX, showTopLoading, hiddenTopLoading } = useTopLoading();
 
   function imgs(arr) {
     return arr.map((o, index) => (
@@ -32,6 +36,7 @@ export const Home = () => {
   }
   return (
     <Page fullWidth title="您好! 张无忌" subtitle="下午好! 今天是fastlane陪伴你的第 xx 天">
+      {topLoadingJSX}
       <Button
         onClick={() => {
           setToken();
@@ -46,8 +51,10 @@ export const Home = () => {
       >
         修改token
       </Button>
-      <Button onClick={() => setLoading(true)}>loading: true</Button>
-      <Button onClick={() => setLoading(false)}>loading: fasle</Button>
+      <Button onClick={() => setLoading(true)}>全局loading: true</Button>
+      <Button onClick={() => setLoading(false)}>全局loading: fasle</Button>
+      <Button onClick={showTopLoading}>loading hook: true</Button>
+      <Button onClick={hiddenTopLoading}>loading hook: false</Button>
       <Button onClick={toggleActive}>toast</Button>
       <br />
       <br />
