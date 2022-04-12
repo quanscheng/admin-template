@@ -7,23 +7,12 @@ import { AppProvider } from "@shopify/polaris";
 import { Login } from "./pages/Login/Login";
 import Main from "./pages/main";
 import { RecoilRoot } from "recoil";
-import logo from "./assets/img/logo.svg";
 import { polaris_link } from "./utils/polaris_link";
 
 function App() {
-  const theme = {
-    logo: {
-      width: 120,
-      topBarSource: logo,
-      url: "/",
-      accessibilityLabel: "PMP",
-      contextualSaveBarSource: logo,
-    },
-  };
-
   return (
     <RecoilRoot>
-      <AppProvider theme={theme} linkComponent={polaris_link}>
+      <AppProvider linkComponent={polaris_link}>
         <BrowserRouter>
           <Routes>
             <Route path="/login" element={<Login />} />

@@ -1,5 +1,4 @@
-import { Button, Modal, Stack, ThemeProvider } from "@shopify/polaris";
-
+import { Modal } from "@shopify/polaris";
 import { useBoolean } from "ahooks";
 
 /**
@@ -19,18 +18,14 @@ export const useDeleteModal = ({
   const [state, { toggle }] = useBoolean();
 
   const DelModalJSX = (
-    <Modal open={state} onClose={toggle} title={title}>
+    <Modal
+      open={state}
+      onClose={toggle}
+      title={title}
+      primaryAction={{ destructive: true, content: buttonText, onAction: handleDelete }}
+      secondaryActions={[{ content: "Cancel", onAction: toggle }]}
+    >
       <Modal.Section>{content}</Modal.Section>
-      <Modal.Section>
-        <Stack distribution="trailing">
-          <Button onClick={toggle}>Cancel</Button>
-          <ThemeProvider theme={{ colors: { primary: "#D82C0D" } }}>
-            <Button primary onClick={handleDelete}>
-              {buttonText}
-            </Button>
-          </ThemeProvider>
-        </Stack>
-      </Modal.Section>
     </Modal>
   );
   return {

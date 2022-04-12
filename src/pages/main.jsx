@@ -11,6 +11,7 @@ import AuthToken from "@/components/AuthToken";
 import { CustomToast } from "@/components/CustomToast";
 import { Menu } from "./main.menu";
 import { TopBarMenu } from "./main.header";
+import logo from "../assets/img/logo.svg";
 import { routes } from "@/configs/routes";
 import { useRecoilState } from "recoil";
 import { useRoutes } from "react-router-dom";
@@ -26,9 +27,17 @@ const Main = () => {
   const [error] = useRecoilState(atom_toastError); // false
   const toggleActive = useCallback(() => setActive((active) => !active), [setActive]);
 
+  const Logo = {
+    width: 120,
+    topBarSource: logo,
+    url: "/",
+    accessibilityLabel: "PMP",
+    contextualSaveBarSource: logo,
+  };
+
   return (
     <AuthToken>
-      <Frame navigation={<Menu />} topBar={<TopBarMenu />}>
+      <Frame logo={Logo} navigation={<Menu />} topBar={<TopBarMenu />}>
         <CustomToast active={active} content={content} toggleActive={toggleActive} error={error} />
 
         {global_Loading}
