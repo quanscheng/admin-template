@@ -12,14 +12,14 @@ import { polaris_link } from "./utils/polaris_link";
 function App() {
   return (
     <RecoilRoot>
-      <AppProvider linkComponent={polaris_link}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <AppProvider linkComponent={polaris_link}>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/*" element={<Main />} />
           </Routes>
-        </BrowserRouter>
-      </AppProvider>
+        </AppProvider>
+      </BrowserRouter>
     </RecoilRoot>
   );
 }
