@@ -10,7 +10,6 @@ const Child = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const params = useParams();
-
   // Toast
   const { toastMarkup: toast1, toggleActive: toggle1 } = useCustomToast("自定义的内容1");
   const { toastMarkup: toast2, toggleActive: toggle2 } = useCustomToast("自定义的内容2", true);

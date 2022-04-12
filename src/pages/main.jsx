@@ -1,5 +1,5 @@
 import { Frame, Loading } from "@shopify/polaris";
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import {
   atom_loading,
   atom_toastActive,

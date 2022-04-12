@@ -2,7 +2,7 @@ import { CustomersMajor, MarketingMajor, OrdersMinor, SettingsMajor } from "@sho
 
 import { Navigation } from "@shopify/polaris";
 import React from "react";
-import { routesURL } from "@/configs/routes.url";
+import { ur } from "@/configs/routes.url";
 import { useLocation } from "react-router-dom";
 
 export const Menu = () => {
@@ -10,7 +10,7 @@ export const Menu = () => {
   // Section1
   const left_top = [
     {
-      url: routesURL.test,
+      url: ur.test,
       label: "Navigation.Section",
       exactMatch: true,
     },
@@ -18,14 +18,14 @@ export const Menu = () => {
   // 左边主菜单 Section2
   const left_menu = [
     {
-      url: routesURL.home,
+      url: ur.home,
       label: "Home",
       icon: CustomersMajor,
       exactMatch: true,
       // badge: '15',
       subNavigationItems: [
         {
-          url: routesURL.partners,
+          url: ur.partners,
           label: "All partners",
           // exactMatch: true, // 不加所有子路由都会让改标签处于选中状态
         },
@@ -37,42 +37,42 @@ export const Menu = () => {
       ],
     },
     {
-      url: routesURL.campaigns,
+      url: ur.campaigns,
       label: "Campaigns",
       icon: MarketingMajor,
       exactMatch: true,
       // badge: '15',
       subNavigationItems: [
         {
-          url: routesURL.allcampaigns,
+          url: ur.allcampaigns,
           label: "All campaigns",
           exactMatch: true,
         },
         {
-          url: routesURL.cooperations,
+          url: ur.cooperations,
           label: "Cooperations",
           exactMatch: true,
         },
         {
-          url: routesURL.promotions,
+          url: ur.promotions,
           label: "Promotions",
           exactMatch: true,
         },
       ],
     },
     {
-      url: routesURL.orders,
+      url: ur.orders,
       label: "Orders",
       icon: OrdersMinor,
       exactMatch: true,
       subNavigationItems: [
         {
-          url: routesURL.deliveries,
+          url: ur.deliveries,
           label: "Deliveries",
           exactMatch: true,
         },
         {
-          url: routesURL.payments,
+          url: ur.payments,
           label: "Payments",
           exactMatch: true,
         },
@@ -82,7 +82,7 @@ export const Menu = () => {
   // 左边下方菜单 Section3
   const bottom_menu = [
     {
-      url: routesURL.settings,
+      url: ur.settings,
       label: "settings",
       icon: SettingsMajor,
       exactMatch: true,
