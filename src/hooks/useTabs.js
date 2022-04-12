@@ -26,12 +26,6 @@ export const useTabs = ({ titles = [], fitted = false }) => {
     <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted={fitted}></Tabs>
   );
 
-  useEffect(() => {
-    if (!!titles.length) {
-      setSelected(0);
-    }
-  }, [titles]);
-
   return {
     tabJSX,
     selected,
