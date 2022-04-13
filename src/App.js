@@ -1,12 +1,19 @@
 import "./App.css";
 
-import { routes } from "./configs/routes";
-import { useRoutes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import Login from "./components/Login";
+import Main from "./pages/Main";
 
 function App() {
-  const elements = useRoutes(routes);
-
-  return <div className="App">{elements}</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/*" element={<Main />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
