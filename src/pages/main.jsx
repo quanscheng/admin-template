@@ -16,13 +16,16 @@ const { SubMenu } = Menu;
 
 const Main = () => {
   const elements = useRoutes(routes);
+
   const [collapsed, setCollapsed] = useState(false);
-  const onCollapse = useCallback((collapsed) => setCollapsed(collapsed));
+  const onCollapse = useCallback((collapsed) => setCollapsed(collapsed), []);
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
-        <div className="logo" />
+      <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+        <div className="logo" style={{ height: 60 }}>
+          logo
+        </div>
         <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             Option 1
@@ -45,14 +48,21 @@ const Main = () => {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
+        <Header className="site-layout-background" style={{ padding: 0 }}>
+          <Menu  mode="horizontal" defaultSelectedKeys={["2"]}>
+            <Menu.Item key="1">nav 1</Menu.Item>
+            <Menu.Item key="2">nav 2</Menu.Item>
+            <Menu.Item key="3">nav 3</Menu.Item>
+          </Menu>
+
+        </Header>
         <Content style={{ margin: "0 16px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
           <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            Bill is a cat.
+            {elements}
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>Ant Design ©2018 Created by Ant UED</Footer>
