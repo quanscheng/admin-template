@@ -20,6 +20,8 @@ const Main = () => {
   const [collapsed, setCollapsed] = useState(false);
   const onCollapse = useCallback((collapsed) => setCollapsed(collapsed), []);
 
+
+  
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
