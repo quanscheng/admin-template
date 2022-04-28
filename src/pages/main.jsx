@@ -1,4 +1,4 @@
-import { Breadcrumb, Layout, Menu } from "antd";
+import { Avatar, Breadcrumb, Layout, Menu } from "antd";
 import {
   DesktopOutlined,
   FileOutlined,
@@ -20,8 +20,6 @@ const Main = () => {
   const [collapsed, setCollapsed] = useState(false);
   const onCollapse = useCallback((collapsed) => setCollapsed(collapsed), []);
 
-
-  
   return (
     <Layout style={{ minHeight: "100vh" }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
@@ -51,12 +49,12 @@ const Main = () => {
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }}>
-          <Menu  mode="horizontal" defaultSelectedKeys={["2"]}>
+          <Menu mode="horizontal" defaultSelectedKeys={["2"]}>
             <Menu.Item key="1">nav 1</Menu.Item>
             <Menu.Item key="2">nav 2</Menu.Item>
             <Menu.Item key="3">nav 3</Menu.Item>
           </Menu>
-
+          <Avatar />
         </Header>
         <Content style={{ margin: "0 16px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>

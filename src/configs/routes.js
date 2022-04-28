@@ -1,6 +1,6 @@
 import { Suspense, lazy } from "react";
 
-import { Child } from "@/pages/Child";
+import Child from "@/pages/Child";
 import { Home } from "@/pages/Home";
 
 // const Child = lazy(() => import("@/pages/Child")); // 懒加载必须默认导出
