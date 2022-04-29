@@ -1,72 +1,84 @@
-import { Avatar, Breadcrumb, Layout, Menu } from "antd";
-import {
-  DesktopOutlined,
-  FileOutlined,
-  PieChartOutlined,
-  TeamOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import React, { useCallback, useState } from "react";
+import "./Main.scss";
 
+import { Layout, Menu } from "antd";
+import {
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+
+import React from "react";
+import logo from "../assets/fastlane.png";
+import logo2 from "../assets/logo2.png";
 import { routes } from "@/configs/routes";
 import { useRoutes } from "react-router-dom";
+import { useToggle } from "ahooks";
 
 const { Header, Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
-
 
 const Main = () => {
   const elements = useRoutes(routes);
 
-  const [collapsed, setCollapsed] = useState(false);
-  const onCollapse = useCallback((collapsed) => setCollapsed(collapsed), []);
+  // const [collapsed, setCollapsed] = useState(false);
+  // const onCollapse = useCallback((collapsed) => setCollapsed(collapsed), []);
+  const [collapsed, { toggle: onCollapse }] = useToggle();
 
   return (
-    <Layout style={{ minHeight: "100vh" }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
-        <div className="logo" style={{ height: 60 }}>
-          logo
+    <Layout>
+      <Sider trigger={null} collapsible collapsed={collapsed} style={{width:100}}>
+        {/* 切换时候显示不同的图标,展开就是长图标, 收缩就是小图标 */}
+        <div className="logo" style={{ display: "grid", placeItems: "center" }}>
+          <img
+            src={collapsed ? logo : logo2}
+            alt="logo"
+            style={!collapsed ? { height: 25, width: 124 } : { height: 25, width: 25 }}
+          />
         </div>
-        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            Option 1
-          </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
-            Option 2
-          </Menu.Item>
-          <SubMenu key="sub1" icon={<UserOutlined />} title="User">
-            <Menu.Item key="3">Tom</Menu.Item>
-            <Menu.Item key="4">Bill</Menu.Item>
-            <Menu.Item key="5">Alex</Menu.Item>
-          </SubMenu>
-          <SubMenu key="sub2" icon={<TeamOutlined />} title="Team">
-            <Menu.Item key="6">Team 1</Menu.Item>
-            <Menu.Item key="8">Team 2</Menu.Item>
-          </SubMenu>
-          <Menu.Item key="9" icon={<FileOutlined />}>
-            Files
-          </Menu.Item>
-        </Menu>
+        <Menu
+          theme="dark"
+          mode="inline"
+          defaultSelectedKeys={["1"]}
+          items={[
+            {
+              key: "1",
+              icon: <UserOutlined />,
+              label: "nav 1",
+            },
+            {
+              key: "2",
+              icon: <VideoCameraOutlined />,
+              label: "nav 2",
+            },
+            {
+              key: "3",
+              icon: <UploadOutlined />,
+              label: "nav 3",
+            },
+          ]}
+        />
       </Sider>
       <Layout className="site-layout">
         <Header className="site-layout-background" style={{ padding: 0 }}>
-          <Menu mode="horizontal" defaultSelectedKeys={["2"]}>
-            <Menu.Item key="1">nav 1</Menu.Item>
-            <Menu.Item key="2">nav 2</Menu.Item>
-            <Menu.Item key="3">nav 3</Menu.Item>
-          </Menu>
-          <Avatar />
+          {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+            className: "trigger",
+            onClick: onCollapse,
+          })}
         </Header>
-        <Content style={{ margin: "0 16px" }}>
-          <Breadcrumb style={{ margin: "16px 0" }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
-          <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-            {elements}
-          </div>
+        <Content
+          className="site-layout-background"
+          style={{
+            margin: "24px 16px",
+            padding: 24,
+            minHeight: 280,
+          }}
+        >
+          {elements}
         </Content>
-        <Footer style={{ textAlign: "center" }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer style={{ textAlign: "center", color: "rgb(0,0,0,0.3)",paddingTop:8 }}>
+          Fastlane ©2022 Created by Fastlane Digital Platform
+        </Footer>
       </Layout>
     </Layout>
   );
